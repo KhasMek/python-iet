@@ -1,0 +1,2 @@
+recursive-include iet/res *
+include iet/config.yaml

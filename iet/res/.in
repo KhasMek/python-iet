@@ -1,0 +1,4 @@
+alias iet-ssh='echo ssh ${ssh_port}'
+alias iet-scp='echo scp ${ssh_port}'
+alias iet-rsync='echo rsync ${rsync_port}'
+NESSUS_URL=${nessus_url}

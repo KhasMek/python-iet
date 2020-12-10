@@ -1,0 +1,27 @@
+logging:
+  console:
+    level: 'DEBUG'
+  file:
+    level: 'DEBUG'
+    filename: 'iet.log'
+
+# TODO: add "default" and other "custom" type of bootstrap types
+# and add a command flag for "profile" (`-p, --profile`). Default to default (duh).
+# This will enable a user to specify different project types to
+# bootstrap (eg. pentest, phish, mobile app, code review, etc.).
+bootstrap:
+  dirs:
+    - Reporting
+    - wip
+    - wip/screenshots
+    - project-files
+    - .logging
+  files:
+    basedir:
+      - res/.in
+      - res/.out
+    wip:
+      - res/testfile
+  vars:
+    - ssh_port
+    - nessus_url
