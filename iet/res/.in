@@ -1,4 +1,8 @@
-alias iet-ssh='echo ssh ${ssh_port}'
-alias iet-scp='echo scp ${ssh_port}'
-alias iet-rsync='echo rsync ${rsync_port}'
-NESSUS_URL=${nessus_url}
+alias iet-ssh='ssh -p ${SSH_PORT}'
+alias iet-scp='scp -P ${SSH_PORT}'
+alias iet-rsync='rsync --info=progress2 -auvz -e 'ssh -p ${SSH_PORT}' --progress'
+alias iet-nessus='open ${NESSUS_URL}'
+PROJDIR="$(pwd)"
+alias prt='cd $PROJDIR'
+test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
+        (script -f $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)

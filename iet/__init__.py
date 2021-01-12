@@ -16,4 +16,4 @@ def iet():
         config = os.path.join(Path.home(), '.iet', 'config.yaml')
     else:
         config = pkg_resources.resource_filename(__name__, "config.yaml")
-    bootstrap.main(config, args.basename, args.project_name)
+    bootstrap.main(config, args.basename, args.project_name, args.project_type)

@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
 import logging
+import os
 
 from colorama import Fore, Style
 from datetime import datetime
+from pathlib import Path
 
 
 class ConsoleFormatter(logging.Formatter):
@@ -51,7 +53,8 @@ def setup_logging(settings):
         logger.addHandler(logger_ch)
     if 'file' in settings:
         # TODO: This should log to the main config dir ("~/.iet/logfile")
-        logger_fh = logging.FileHandler(settings['file']['filename'], mode='w')
+        logfile = (os.path.join(Path.home(), '.iet', settings['file']['filename']))
+        logger_fh = logging.FileHandler(logfile, mode='w')
         logger_fh.setLevel(settings['file']['level'])
         logger_fh.setFormatter(FileFormatter())
         logger.addHandler(logger_fh)

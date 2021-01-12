@@ -1,4 +1,9 @@
 unalias iet-ssh
 unalias iet-scp
 unalias iet-rsync
-unset NESSUS_URL
+unalias iet-nessus
+unset PROJDIR
+unalias prt
+test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' &&  \
+        echo "script is running. Stopping now..." && \
+        exit
