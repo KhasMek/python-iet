@@ -4,5 +4,9 @@ alias iet-rsync='rsync --info=progress2 -auvz -e 'ssh -p ${SSH_PORT}' --progress
 alias iet-nessus='open ${NESSUS_URL}'
 PROJDIR="$(pwd)"
 alias prt='cd $PROJDIR'
+if [ -d "$PROJDIR/bin" ]; then
+    export OLDPATH=$PATH
+    export PATH=$PROJDIR/bin:$PATH
+fi
 test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
         (script -f $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)

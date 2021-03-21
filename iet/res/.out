@@ -3,6 +3,9 @@ unalias iet-scp
 unalias iet-rsync
 unalias iet-nessus
 unset PROJDIR
+if [ "$OLDPATH" ]; then
+    export PATH=$OLDPATH
+fi
 unalias prt
 test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' &&  \
         echo "script is running. Stopping now..." && \
