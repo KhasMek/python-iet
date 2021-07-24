@@ -6,6 +6,7 @@ import pkg_resources
 import yaml
 
 from colorama import Fore, Style
+from iet.core import load_config
 from iet.logging import setup_logging
 from pathlib import Path
 from pprint import pprint
@@ -26,14 +27,6 @@ def parse_args(print_help=False):
         return argparser.print_help()
     else:
         return args
-
-# I should refactor this to another module cause imma use it more than here
-def load_config(config, section=None):
-    config = open(config, 'r')
-    config = yaml.load(config)
-    if section:
-        config = config[section]
-    return config
 
 
 def mkvars(vars):
