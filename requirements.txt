@@ -1,2 +1,5 @@
 colorama
+six
+ipcalc
 pyyaml
+texttable
