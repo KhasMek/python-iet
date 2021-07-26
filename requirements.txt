@@ -1,5 +1,7 @@
 colorama
 six
 ipcalc
+pyperclip
 pyyaml
+rstr
 texttable
