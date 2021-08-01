@@ -22,3 +22,24 @@ bootstrap:
     vars:
       - nessus_url
       - ssh_port
+
+passwords:
+  month_spread: 5
+  end_characters: '!.'
+  seasons:
+    spring:
+      - 3
+      - 4
+      - 5
+    summer:
+      - 6
+      - 7
+      - 8
+    fall:
+      - 9
+      - 10
+      - 11
+    winter:
+      - 12
+      - 1
+      - 2

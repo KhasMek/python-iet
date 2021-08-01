@@ -28,7 +28,8 @@ def iet_password_list_generator():
     password_list_generator.main(
         config,
         iters=args.iters if args.iters else None,
-        regex=args.regex,
+        basic=args.basic if args.basic else False,
+        regex=args.regex if args.regex else None,
         copy=args.copy if args.copy else False,
         stdout=args.stdout if args.stdout else False,
         write=args.write if args.write else False,
