@@ -3,7 +3,7 @@
 from . import bootstrap
 from iet.core import find_config
 from iet.helpers import ip_calc
-from iet.helpers import password_list_generator
+from iet.helpers import wordlist_generator
 
 
 def iet_bootstrap():
@@ -22,10 +22,10 @@ def iet_ip_calc():
                 netblock=args.netblock if args.netblock else None
                 )
 
-def iet_password_list_generator():
-    args = password_list_generator.parse_args()
+def iet_wordlist_generator():
+    args = wordlist_generator.parse_args()
     config = find_config(args)
-    password_list_generator.main(
+    wordlist_generator.main(
         config,
         iters=args.iters if args.iters else None,
         basic=args.basic if args.basic else False,

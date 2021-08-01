@@ -23,7 +23,7 @@ bootstrap:
       - nessus_url
       - ssh_port
 
-passwords:
+wordlists:
   month_spread: 5
   end_characters: '!.'
   seasons:

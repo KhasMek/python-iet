@@ -70,7 +70,7 @@ def write_outfile(outfile, wordlist):
 def main(config, iters=100, basic=False, regex=None, copy=False, stdout=False, write=False, outfile='iet-wordlist.txt'):
     global logger
     logger = setup_logging(load_config(config, 'logging'))
-    config = load_config(config, 'passwords')
+    config = load_config(config, 'wordlists')
     iters = int(iters.replace('k', '000'))
     wordlist = ''
     if (not basic) and (not regex):
