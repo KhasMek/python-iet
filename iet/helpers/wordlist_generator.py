@@ -53,11 +53,13 @@ def gen_seasonal_wordlist(month_spread=5, seasons=None, end_characters='!.'):
         seasonal_list.add("%s%s%s" % (season.capitalize(), current_year, char))
         for x in range(0, month_spread):
             mod_month = current_month - x
+            _year = current_year
             if mod_month <= 0:
                 mod_month = mod_month + 12
-            _month = datetime.date(current_year, mod_month, int(today.strftime("%d"))).strftime("%B")
-            seasonal_list.add("%s%s%s" % (_month, current_year, char))
-            seasonal_list.add("%s%s%s" % (_month.lower(), current_year, char))
+                _year = current_year - 1
+            _month = datetime.date(_year, mod_month, int(today.strftime("%d"))).strftime("%B")
+            seasonal_list.add("%s%s%s" % (_month, _year, char))
+            seasonal_list.add("%s%s%s" % (_month.lower(), _year, char))
     return seasonal_list
 
 
