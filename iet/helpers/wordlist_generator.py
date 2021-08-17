@@ -14,19 +14,19 @@ logger = None
 
 
 def parse_args(print_help=False):
-    argparser = argparse.ArgumentParser(prog='genlist')
-    argparser.add_argument('-b', '--basic', help='generate basic (seasonal) wordlist',
+    argparser = argparse.ArgumentParser(prog='wordlist_generator')
+    argparser.add_argument('-b', '--basic', help='Generate basic (seasonal) wordlist',
                            action='store_true')
-    argparser.add_argument('-c', '--config', help='location of config file', default=None)
-    argparser.add_argument('-cp', '--copy', help='copy to clipboard', action='store_true')
-    argparser.add_argument('-i', '--iters', help='length of wordlist to generate',
+    argparser.add_argument('-c', '--config', help='Location of config file', default=None)
+    argparser.add_argument('-cp', '--copy', help='Copy to clipboard', action='store_true')
+    argparser.add_argument('-i', '--iters', help='Length of wordlist to generate',
                            default='100')
-    argparser.add_argument('-o', '--outfile', help='name of the worldlist file',
+    argparser.add_argument('-o', '--outfile', help='Name of the worldlist file',
                            default='iet-wordlist.txt')
-    argparser.add_argument('-r', '--regex', help='path to the file or directory to parse')
-    argparser.add_argument('-s', '--stdout', help='print list to terminal',
+    argparser.add_argument('-r', '--regex', help='Path to the file or directory to parse')
+    argparser.add_argument('-s', '--stdout', help='Print list to terminal',
                            action='store_true')
-    argparser.add_argument('-w', '--write', help='write the wordlist to file',
+    argparser.add_argument('-w', '--write', help='Write the wordlist to file',
                            action='store_true')
     args = argparser.parse_args()
     if print_help:
