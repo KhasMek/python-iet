@@ -8,6 +8,7 @@ TODO: support formats like 192.0.2.8[0-5]
 import argparse
 import ipcalc
 
+
 from colorama import Fore
 from iet.core import load_config
 from iet.logging import setup_logging
