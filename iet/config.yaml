@@ -10,6 +10,9 @@ bootstrap:
     dirs:
       - Reporting
       - wip
+      - wip/nmap
+      - wip/nessus
+      - wip/gobuster
       - wip/screenshots
       - project-files
       - .logging
@@ -17,11 +20,45 @@ bootstrap:
       basedir:
         - res/.in
         - res/.out
-      wip:
-        - res/testfile
     vars:
       - nessus_url
       - ssh_port
+  segmentation-test:
+    dirs:
+      - Reporting
+      - wip
+      - wip/nmap
+      - project-files
+      - .logging
+    files:
+      basedir:
+        - res/.in
+        - res/.out
+    vars:
+      - ssh_port
+  barebones:
+    dirs:
+      - .logging
+    files:
+      basedir:
+        - res/.in
+        - res/.out
+    vars:
+        - ssh_port
+  mobile-app:
+    dirs:
+      - Reporting
+      - wip
+      - src
+      - project-files
+      - app-packages
+      - .logging
+    files:
+      basedir:
+        - res/.in
+        - res/.out
+    vars:
+      - nessus_url
 
 wordlists:
   month_spread: 5
