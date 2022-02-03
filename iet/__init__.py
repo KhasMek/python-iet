@@ -4,6 +4,7 @@ from . import bootstrap
 from iet.core import find_config
 from iet.helpers import ip_calc
 from iet.helpers import wordlist_generator
+from iet.helpers import cookie_monster
 
 
 def iet_bootstrap():
@@ -34,4 +35,15 @@ def iet_wordlist_generator():
         stdout=args.stdout if args.stdout else False,
         write=args.write if args.write else False,
         outfile=args.outfile if args.outfile else None
+    )
+
+
+def iet_cookie_monster():
+    args = cookie_monster.parse_args()
+    config = find_config(args)
+    cookie_monster.main(
+        config,
+        target=args.target,
+        outfile=args.outfile if args.outfile else None,
+        no_verify=args.no_verify if args.no_verify else False
     )

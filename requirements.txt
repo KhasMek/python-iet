@@ -3,5 +3,6 @@ six
 ipcalc
 pyperclip
 pyyaml
+requests
 rstr
 texttable
