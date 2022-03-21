@@ -43,6 +43,8 @@ def setup_logging(settings):
     """
     read in a json object of settings to set up the custom logging.
     """
+    if not os.path.exists(os.path.join(Path.home(), '.iet')):
+        os.mkdir(os.path.join(Path.home(), '.iet'))
     logger = logging.getLogger()
     # Set fallback/default log level.
     logger.setLevel('DEBUG')
