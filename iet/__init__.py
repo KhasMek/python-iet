@@ -5,6 +5,7 @@ from iet.core import find_config
 from iet.helpers import ip_calc
 from iet.helpers import wordlist_generator
 from iet.helpers import cookie_monster
+from iet.helpers import favicon_lookup
 
 
 def iet_bootstrap():
@@ -47,3 +48,12 @@ def iet_cookie_monster():
         outfile=args.outfile if args.outfile else None,
         no_verify=args.no_verify if args.no_verify else False
     )
+
+
+def iet_favicon_lookup():
+    args = favicon_lookup.parse_args()
+    config = find_config(args)
+    favicon_lookup.main(
+        config,
+        target=args.target
+        )

@@ -1,6 +1,7 @@
 colorama
 six
 ipcalc
+mmh3
 pyperclip
 pyyaml
 requests
