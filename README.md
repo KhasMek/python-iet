@@ -30,7 +30,7 @@ Requirements:
 
 - python3
 - pip
-- oh-my-zsh autoenv plugin (for bootstrapping functionality)
+- oh-my-zsh [autoenv](https://github.com/zpm-zsh/autoenv) plugin (for bootstrapping functionality)
 
 ### pip
 
@@ -57,7 +57,7 @@ pip install -e .
 
 **Command:** `iet-bootstrap`
 
-A tool to bootstrap a projects working directory, including project directories, logging, aliases and global variables set to the specific project. All of this is modular and can be customized by the user in the config.
+A tool to bootstrap a projects working directory, including project directories, logging, aliases and global variables set to the specific project. All of this is modular and can be customized by the user in the config. This command curretly requires [autoenv](https://github.com/zpm-zsh/autoenv) to function. However, this will soon be ported over to [direnv](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv).
 
 #### Usage
 
@@ -75,6 +75,14 @@ optional arguments:
   -pn PROJECT_NAME, --project_name PROJECT_NAME
                         project directory name
 ```
+
+#### Example
+
+```shell
+iet-bootstrap -pt mobile-app -pn test-application
+```
+
+Will create the folder `test-application` at the current directory with mobile application focused tooling.
 
 ---
 
