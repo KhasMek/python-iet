@@ -8,5 +8,10 @@ if [ -d "$PROJDIR/bin" ]; then
     export OLDPATH=$PATH
     export PATH=$PROJDIR/bin:$PATH
 fi
-test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
-        (script -f $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)
+if [ "$(uname)" = "Darwin" ]; then
+    test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
+        (script $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)
+else
+    test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
+            (script -f $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)
+fi
