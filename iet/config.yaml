@@ -48,17 +48,20 @@ bootstrap:
   mobile-app:
     dirs:
       - Reporting
-      - wip
-      - src
+      - wip/android
+      - wip/ios
+      - src/android
+      - src/ios
       - project-files
       - app-packages
       - .logging
     files:
       basedir:
-        - res/.in
-        - res/.out
+        - res/mobile-app/.in
+        - res/mobile-app/.out
     vars:
       - nessus_url
+      - package_name
 
 wordlists:
   month_spread: 5

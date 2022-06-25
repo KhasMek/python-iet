@@ -1,0 +1,76 @@
+alias iet-ssh='ssh -p ${SSH_PORT}'
+alias iet-scp='scp -P ${SSH_PORT}'
+alias iet-rsync='rsync --info=progress2 -auvz -e 'ssh -p ${SSH_PORT}' --progress'
+alias iet-nessus='open ${NESSUS_URL}'
+export PACKAGE_NAME=${PACKAGE_NAME}
+PROJDIR="$(pwd)"
+alias prt='cd $PROJDIR'
+
+if [ -d "$PROJDIR/bin" ]; then
+    export OLDPATH=$PATH
+    export PATH=$PROJDIR/bin:$PATH
+fi
+
+iet-android-apk-decompile () {
+    package_name=$(basename -s .apk "$1")
+    jadx -d "$PROJDIR/src/android/$package_name" --deobf "$1"
+}
+
+iet-android-apk-pull () {
+    if [ ! -z $PACKAGE_NAME ]; then
+        package_name=$PACKAGE_NAME
+    else
+        package_name="$1"
+    fi
+    for f in $(adb shell pm path "$package_name" | cut -d':' -f2); do adb pull "$f" "$PROJDIR"/app-packages/"$package_name".apk; done
+}
+
+iet-android-intent-launch () {
+    # targets-[activities|services]
+    infile="$1"
+    # com.app.name
+    package_name="$2"
+    # activity or service
+    launch_type="$3"
+
+    for t in $(cat "$infile")
+    do
+        echo "$t"
+        objection --gadget "$package_name" run android intent launch_"$launch_type" "$t"
+        if [ $(basename $SHELL) = "zsh" ]; then
+            read "?Press enter to continue"
+        else
+            read -p "Press enter to continue"
+        fi
+    done
+}
+
+iet-ios-applog () {
+    if [ ! -z $PACKAGE_NAME ]; then
+        package_name=$PACKAGE_NAME
+    else
+        package_name="$1"
+    fi
+    idevicesyslog -u $(idevice_id | cut -f1 -d' ') -m $package_name
+}
+
+iet-ios-plist-convert () {
+    plutil -convert xml1 "$1"
+}
+
+iet-objection-explore () {
+    if [ ! -z $PACKAGE_NAME ]; then
+        package_name=$PACKAGE_NAME
+    else
+        package_name="$1"
+    fi
+    objection --gadget "$package_name" explore
+}
+
+if [ "$(uname)" = "Darwin" ]; then
+    test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
+        (script $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)
+else
+    test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' || \
+            (script -f $PROJDIR/.logging/$(date +"%Y-%m-%d_%H:%M:%S")_script.log)
+fi

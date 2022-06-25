@@ -1,0 +1,20 @@
+unalias iet-ssh
+unalias iet-scp
+unalias iet-rsync
+unalias iet-nessus
+unset PACKAGE_NAME
+unset PROJDIR
+if [ "$OLDPATH" ]; then
+    export PATH=$OLDPATH
+fi
+unalias prt
+unset -f iet-android-apk-decompile
+unset -f iet-android-apk-pull
+unset -f iet-android-intent-launch
+unset -f iet-ios-applog
+unset -f iet-ios-plist-convert
+unset -f iet-objection-explore
+
+test "$(ps -ocommand= -p $PPID | awk '{print $1}')" = 'script' &&  \
+        echo "script is running. Stopping now..." && \
+        exit
